@@ -17,14 +17,16 @@ function goToActivityTab() {
         var opt1= {
             type: "basic",
             title: "One object has been added into cast!",
-            message: "1 Mask has been added, please check your cast!"
+            message: "1 Mask has been added, please check your cast!",
+            iconUrl: "icon.png",
+            id: getJSessionId()
         };
         chrome.runtime.sendMessage({type: "shownotification", opt: opt1}, function(){});
     }
     else{
         //alert("refresh");
         count++;
-        if(count >= 3600){
+        if(count >= 21600){
             clearInterval(intrvalid);
             return;
             
@@ -38,9 +40,22 @@ var opt = {
     type: "basic",
     title: "Auto-refresher JPA started!",
     message: "It will keep refreshing in next 30mins\nTarget Price: "+targetprice+" yenzzzz",
-    iconUrl: "icon.png"
+    iconUrl: "icon.png",
+    id:getJSessionId()
+
 };
-chrome.runtime.sendMessage({type: "shownotification", opt: opt}, function(){});
+chrome.runtime.sendMessage({type: "shownotification_start", opt: opt}, function(){});
 var count = 0;
 var intrvalid = setInterval(goToActivityTab,1000);
+
+function getJSessionId(){
+    var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
+    if(jsId != null) {
+        if (jsId instanceof Array)
+            jsId = jsId[0].substring(11);
+        else
+            jsId = jsId.substring(11);
+    }
+    return jsId;
+}
 

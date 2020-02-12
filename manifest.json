@@ -1,8 +1,8 @@
 {
   "name": "Auto refresher",
-  "version": "0.22",
+  "version": "0.3",
   "author": "Michael Chu",
-  "description": "Auto resfresher only for amazonJP masks purchasing\nv0.22 hotfix: 1s refresh",
+  "description": "Auto resfresher only for amazonJP masks purchasing\nv0.22 hotfix: 1s refresh\nv0.3 Audio, multiple tabs support",
   "permissions": ["notifications", "tabs", "<all_urls>"],
   "browser_action": { 
     "default_icon": "icon.png",
